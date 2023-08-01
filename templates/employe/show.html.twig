@@ -8,8 +8,10 @@
     <h2>{{ employe }}</h2>
     <p>
         Date de naissance : {{ employe.dateNaissance | date('d-m-Y')}} <br>
-        Entreprise : <a href='{{ path('show_employe', {'id': employe.id}) }}'> {{ employe.entreprise }} </a><br>
+        Age: {{ employe.age }} ans<br>
+        Entreprise : <a href='{{ path('show_entreprise', {'id': employe.entreprise.id}) }}'> {{ employe.entreprise }} </a><br>
         Date d'embauche : {{ employe.dateEmbauche| date('d-m-Y')}}
     </p>
+
 
 {% endblock %}
