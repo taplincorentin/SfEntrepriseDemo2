@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Entreprise;
+use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,6 +26,19 @@ class EntrepriseController extends AbstractController
         $entreprises = $entrepriseRepository->findBy(["ville" => 'Strasbourg'], ["raisonSociale" => "ASC"]);
         return $this->render('entreprise/index.html.twig', [
             'entreprises' => $entreprises
+        ]);
+    }
+
+    
+    #[Route('/entreprise/new', name: 'new_entreprise')]
+    public function new(Request $request): Response
+    {
+        $entreprise = new Entreprise();
+ 
+        $form = $this->createForm(EntrepriseType::class, $entreprise);
+
+        return $this->render('entreprise/new.html.twig', [
+            'formAddEntreprise' => $form,
         ]);
     }
 
