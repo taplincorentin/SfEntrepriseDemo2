@@ -7,7 +7,8 @@
 
     <h2>{{ entreprise }}</h2>
     <p>
-        Adresse : {{ entreprise.adresse }}
+        Adresse : {{ entreprise.adresseComplete }}
+        Date de création : {{ entreprise.dateCreation | date('d-m-Y')}}
     </p>
 
 {% endblock %}

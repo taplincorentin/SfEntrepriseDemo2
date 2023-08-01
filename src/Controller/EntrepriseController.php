@@ -27,7 +27,7 @@ class EntrepriseController extends AbstractController
         ]);
     }
 
-    #[Route('/entreprise/(id)', name: 'show_entreprise')]
+    #[Route('/entreprise/{id}', name: 'show_entreprise')]
     public function show(Entreprise $entreprise): Response {
         
         return $this->render('entreprise/show.html.twig', [
