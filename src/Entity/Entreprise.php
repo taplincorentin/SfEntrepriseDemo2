@@ -32,6 +32,8 @@ class Entreprise
     private ?string $ville = null;
 
     #[ORM\OneToMany(mappedBy: 'entreprise', targetEntity: Employe::class, orphanRemoval: true)]
+
+    #[ORM\OrderBy(['nom' => 'ASC'])] //permet de toujours trier une liste d'employés par ordre alphabétique (en utilisant meur nom)
     private Collection $employes;
 
     public function __construct()
